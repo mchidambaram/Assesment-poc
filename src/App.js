@@ -66,9 +66,9 @@ class App extends React.Component  {
 
 
     return <Stack tokens={stackTokens}>
-      <div class="ms-Grid" dir="ltr">
-        <div class="ms-Grid-row">
-          <div class="ms-Grid-col ms-sm12 ms-md4">
+      <div className="ms-Grid" dir="ltr">
+        <div className="ms-Grid-row">
+          <div className="ms-Grid-col ms-sm12 ms-md4">
             <Dropdown 
               placeholder="Select Department" 
               label="Department" 
@@ -76,7 +76,7 @@ class App extends React.Component  {
               options={departments} 
               styles={dropdownStyles} />
           </div> 
-          <div class="ms-Grid-col ms-sm12 ms-md4">
+          <div className="ms-Grid-col ms-sm12 ms-md4">
             <Dropdown 
               placeholder="Select Employees"
               label="Employees"
@@ -85,13 +85,13 @@ class App extends React.Component  {
               styles={dropdownStyles} />
               {isLoading && <h1>Fetching data</h1>}
           </div>  
-          <div class="ms-Grid-col ms-sm12 ms-md2">
+          <div className="ms-Grid-col ms-sm12 ms-md2">
             <Button className="customBtn" onClick={() => { 
               if(this.state.employee) 
               fetchEmployee(this.state.employee.key) 
               }}>Fetch Details</Button>
           </div>
-          <div class="ms-Grid-col ms-sm12 ms-md2">
+          <div className="ms-Grid-col ms-sm12 ms-md2">
             <Button className="customBtn" onClick={() => { this.setState({
               department : null,
               employee : null,
