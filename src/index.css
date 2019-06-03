@@ -16,6 +16,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-button{
-  width:200px;
+
+.customBtn {
+  margin-top : 28px !important;
+  width: 100%;
+}
+
+.details-container {
+  min-width : 200px;
+  margin : 0px auto;
+}
+
+.detail > div {
+  display: inline-block;
+}
+
+.idInfo {
+  width: 25%;
+}
+
+.nameInfo {
+  width : 75%;
+  text-align : right; 
+}
+
+.profileImg {
+  width: 100%;
+  height: auto;
 }

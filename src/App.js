@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
-//import { fetchWhiskies } from './actions';
+import './App.scss';
 import { fetchEmployee } from './actions';
-
+import { Button } from 'office-ui-fabric-react/lib/Button';
+ 
 const dropdownStyles = {
-  dropdown: { width: 300 }
+ 
 };
 
 const departments = [
@@ -56,7 +57,7 @@ class App extends React.Component  {
 
     const {
       data,
-      //fetchWhiskies, 
+      
       fetchEmployee,
       isLoading,
       error,
@@ -65,29 +66,46 @@ class App extends React.Component  {
 
 
     return <Stack tokens={stackTokens}>
-      <Dropdown 
-        placeholder="Select Department" 
-        label="Department" 
-        onChange={this.changeDepart}  
-        options={departments} 
-        styles={dropdownStyles} />
-        
-      <Dropdown 
-        placeholder="Select Employees"
-        label="Employees"
-        onChange={this.changeEmployee}
-        options={filteredOptions} 
-        styles={dropdownStyles} />
-        {isLoading}
-        
-        <button onClick={() => fetchEmployee(this.state.employee.key)}>Fetch Details</button>
-
-      {data && <div>
-          <img src={data.avatar} />
-          <div>{data.id}</div>
-          <div>{data.first_name} {data.last_name}</div>
+      <div class="ms-Grid" dir="ltr">
+        <div class="ms-Grid-row">
+          <div class="ms-Grid-col ms-sm12 ms-md4">
+            <Dropdown 
+              placeholder="Select Department" 
+              label="Department" 
+              onChange={this.changeDepart}  
+              options={departments} 
+              styles={dropdownStyles} />
+          </div> 
+          <div class="ms-Grid-col ms-sm12 ms-md4">
+            <Dropdown 
+              placeholder="Select Employees"
+              label="Employees"
+              onChange={this.changeEmployee}
+              options={filteredOptions} 
+              styles={dropdownStyles} />
+              {isLoading && <h1>Fetching data</h1>}
+          </div>  
+          <div class="ms-Grid-col ms-sm12 ms-md2">
+            <Button className="customBtn" onClick={() => { 
+              if(this.state.employee) 
+              fetchEmployee(this.state.employee.key) 
+              }}>Fetch Details</Button>
+          </div>
+          <div class="ms-Grid-col ms-sm12 ms-md2">
+            <Button className="customBtn" onClick={() => { this.setState({
+              department : null,
+              employee : null,
+            }); }}>Clear</Button>
+          </div>
+        </div>
+      </div>
+      {data && <div className="details-container">
+          <img className="profileImg" src={data.avatar} />
+          <div className="detail">
+            <div className="idInfo">{data.id}</div>
+            <div className="nameInfo">{data.first_name} {data.last_name}</div>
+          </div>
         </div>}
-        
     </Stack>
   }
 };

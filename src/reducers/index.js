@@ -25,7 +25,7 @@ export default function rootReducer(state = initialState, action) {
                 ...action.payload,
                // details: [...action.payload],
                 // whenever the fetching finishes, we stop showing the spinner and then show the data
-                isLoading: true,
+                isLoading: false,
                 error: null
             };
         case FETCH_EMPLOYEE_FAILURE:
